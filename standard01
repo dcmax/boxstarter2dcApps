@@ -1,0 +1,28 @@
+set-BoxStarterConfig -LocalRepo \\ddcbons002\sysdeploy
+
+Update-ExecutionPolicy -remotesigned
+
+choco install 7zip --cache-location=\\ddcbons002\sysdeploy\cache -y 
+cinst install GoogleChrome-AllUsers --cache-location=\\ddcbons002\sysdeploy\cache -y 
+choco install windirstat --cache-location=\\ddcbons002\sysdeploy\cache -y 
+choco install adobereader --cache-location=\\ddcbons002\sysdeploy\cache -y 
+cinst install flashplayerplugin --cache-location=\\ddcbons002\sysdeploy\cache -y 
+
+Set-ExplorerOptions  -showFileExtensions -EnableShowFullPathInTitleBar
+Enable-RemoteDesktop
+Enable-MicrosoftUpdate
+
+# Update Windows and reboot if necessary
+Install-WindowsUpdate -AcceptEula
+if (Test-PendingReboot) { Invoke-Reboot }
+
+
+# Update Windows and reboot if necessary
+Install-WindowsUpdate -AcceptEula
+if (Test-PendingReboot) { Invoke-Reboot }
+
+
+# Update Windows and reboot if necessary
+Install-WindowsUpdate -AcceptEula
+if (Test-PendingReboot) { Invoke-Reboot }
+
