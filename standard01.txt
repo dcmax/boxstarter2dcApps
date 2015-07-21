@@ -1,12 +1,18 @@
-set-BoxStarterConfig -LocalRepo \\ddcbons002\sysdeploy
 
 Update-ExecutionPolicy -remotesigned
 
-choco install 7zip --cache-location=\\ddcbons002\sysdeploy\cache -y 
-cinst install GoogleChrome-AllUsers --cache-location=\\ddcbons002\sysdeploy\cache -y 
-choco install windirstat --cache-location=\\ddcbons002\sysdeploy\cache -y 
-choco install adobereader --cache-location=\\ddcbons002\sysdeploy\cache -y 
-cinst install flashplayerplugin --cache-location=\\ddcbons002\sysdeploy\cache -y 
+choco install chocolatey -y
+choco install 7zip.install -y 
+choco install GoogleChrome-AllUsers -y 
+choco install windirstat  -y 
+choco install adobereader  -y 
+choco install flashplayerplugin  -y
+choco install jre8 -y
+choco install sysinternals -y
+choco install greenshot -y
+choco install windowstelnet -y
+
+
 
 Set-ExplorerOptions  -showFileExtensions -EnableShowFullPathInTitleBar
 Enable-RemoteDesktop
