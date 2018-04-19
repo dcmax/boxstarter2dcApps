@@ -1,17 +1,10 @@
+# configurazione standard per PC
 Update-ExecutionPolicy -remotesigned
 
-choco install chocolatey -y
 choco install 7zip.install -y 
 choco install googlechrome -y
-choco install adblockpluschrome -y
+choco install firefox -y
 choco install adobereader-update -y
-choco install windirstat -y 
-choco install flashplayerplugin  -y
-choco install jre8 -y
-choco install sysinternals -y
-choco install greenshot -y
-choco install windowstelnet -y
-choco install notepadplusplus.install -y
 
 Set-ExplorerOptions  -showFileExtensions -EnableShowFullPathInTitleBar
 Enable-RemoteDesktop
@@ -21,11 +14,14 @@ Enable-MicrosoftUpdate
 Install-WindowsUpdate -AcceptEula
 if (Test-PendingReboot) { Invoke-Reboot }
 
-
 # Update Windows and reboot if necessary
 Install-WindowsUpdate -AcceptEula
 if (Test-PendingReboot) { Invoke-Reboot }
 
+
+# Update Windows and reboot if necessary
+Install-WindowsUpdate -AcceptEula
+if (Test-PendingReboot) { Invoke-Reboot }
 
 # Update Windows and reboot if necessary
 Install-WindowsUpdate -AcceptEula
