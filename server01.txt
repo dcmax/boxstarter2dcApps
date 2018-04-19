@@ -1,3 +1,5 @@
+# Pacchetto configurazione server 
+
 Update-ExecutionPolicy -remotesigned
 
 choco install 7zip.install -y 
@@ -11,8 +13,8 @@ choco install notepadplusplus.install -y
 choco install jre8 -y
 choco install windows-admin-center -y 
 
+Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtectedOSFiles -EnableShowFileExtensions -EnableShowFullPathInTitleBar
 
-Set-ExplorerOptions  -showFileExtensions -EnableShowFullPathInTitleBar
 Enable-RemoteDesktop
 Enable-MicrosoftUpdate
 
@@ -20,12 +22,6 @@ Enable-MicrosoftUpdate
 Install-WindowsUpdate -AcceptEula
 if (Test-PendingReboot) { Invoke-Reboot }
 
-
-# Update Windows and reboot if necessary
-Install-WindowsUpdate -AcceptEula
-if (Test-PendingReboot) { Invoke-Reboot }
-
-
 # Update Windows and reboot if necessary
 Install-WindowsUpdate -AcceptEula
 if (Test-PendingReboot) { Invoke-Reboot }
@@ -33,3 +29,9 @@ if (Test-PendingReboot) { Invoke-Reboot }
 # Update Windows and reboot if necessary
 Install-WindowsUpdate -AcceptEula
 if (Test-PendingReboot) { Invoke-Reboot }
+
+# Update Windows and reboot if necessary
+Install-WindowsUpdate -AcceptEula
+if (Test-PendingReboot) { Invoke-Reboot }
+
+{ Invoke-Reboot }
