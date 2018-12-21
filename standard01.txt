@@ -1,14 +1,16 @@
 # configurazione standard per PC
 Update-ExecutionPolicy -remotesigned
 
+Enable-MicrosoftUpdate
+
 choco install 7zip.install -y 
 choco install googlechrome -y
 choco install firefox -y
 choco install adobereader-update -y
 
-Set-ExplorerOptions  -showFileExtensions -EnableShowFullPathInTitleBar
+Set-windowsExplorerOptions  -showFileExtensions -EnableShowFullPathInTitleBar -EnableOpenFileExplorerToQuickAccess -EnableShowRecentFilesInQuickAccess -EnableShowFrequentFoldersInQuickAccess -EnableExpandToOpenFolder -EnableShowRibbon
+
 Enable-RemoteDesktop
-Enable-MicrosoftUpdate
 
 # Update Windows and reboot if necessary
 Install-WindowsUpdate -AcceptEula
