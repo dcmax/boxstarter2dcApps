@@ -10,6 +10,8 @@ choco install adobereader-update -y
 
 Set-windowsExplorerOptions  -showFileExtensions -EnableShowFullPathInTitleBar -EnableOpenFileExplorerToQuickAccess -EnableShowRecentFilesInQuickAccess -EnableShowFrequentFoldersInQuickAccess -EnableExpandToOpenFolder -EnableShowRibbon
 
+DISM /Online /NoRestart /Enable-Feature:TelnetClient
+
 Enable-RemoteDesktop
 
 # Update Windows and reboot if necessary
