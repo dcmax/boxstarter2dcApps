@@ -1,5 +1,10 @@
 # Pacchetto configurazione server 
 
+# Boxstarter options
+$Boxstarter.RebootOk=$true # Allow reboots?
+$Boxstarter.NoPassword=$false # Is this a machine with no login password?
+$Boxstarter.AutoLogin=$true # Save my password securely and auto-login after a reboot
+
 Update-ExecutionPolicy -remotesigned
 
 choco install 7zip.install -y 
@@ -19,20 +24,8 @@ Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtec
 Enable-RemoteDesktop
 Enable-MicrosoftUpdate
 
-# Update Windows and reboot if necessary
-Install-WindowsUpdate -AcceptEula
+Install-WindowsUpdate -AcceptEula -GetUpdatesFromMS
 if (Test-PendingReboot) { Invoke-Reboot }
 
-# Update Windows and reboot if necessary
-Install-WindowsUpdate -AcceptEula
+Install-WindowsUpdate -AcceptEula -GetUpdatesFromMS
 if (Test-PendingReboot) { Invoke-Reboot }
-
-# Update Windows and reboot if necessary
-Install-WindowsUpdate -AcceptEula
-if (Test-PendingReboot) { Invoke-Reboot }
-
-# Update Windows and reboot if necessary
-Install-WindowsUpdate -AcceptEula
-if (Test-PendingReboot) { Invoke-Reboot }
-
-{ Invoke-Reboot }
