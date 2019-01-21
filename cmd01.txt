@@ -1,0 +1,2 @@
+start https://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/dcmax/boxstarter2dcApps/master/standard02.ps1
+
