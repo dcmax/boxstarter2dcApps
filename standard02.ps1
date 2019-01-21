@@ -25,6 +25,9 @@ If (!(Test-Path "HKLM:\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings")) {
 }
 Set-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings -Name UxOption -Type DWord -Value 1
 
+Write-Host "Install WindowsUpdate"
+Install-WindowsUpdate -AcceptEula -GetUpdatesFromMS
+
 choco install 7zip.install -y 
 choco install googlechrome -y
 choco install firefox -y
@@ -38,8 +41,7 @@ DISM /Online /NoRestart /Enable-Feature:TelnetClient
 Enable-RemoteDesktop
 
 # Update Windows and reboot if necessary
-Write-Host "Install WindowsUpdate"
-Install-WindowsUpdate -AcceptEula -GetUpdatesFromMS
+
 if (Test-PendingReboot) { Invoke-Reboot }
 
 Write-Host -ForegroundColor:Green "Installazione econfigurazione completata!" 
