@@ -37,4 +37,4 @@ if (Test-PendingReboot) { Invoke-Reboot }
 Install-WindowsUpdate -AcceptEula
 if (Test-PendingReboot) { Invoke-Reboot }
 
-Write-Host -ForegroundColor:Green "Installazione econfigurazione completata!"
+Write-Host -ForegroundColor:Green "Installazione econfigurazione completata!" 
