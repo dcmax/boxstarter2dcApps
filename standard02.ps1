@@ -1,20 +1,21 @@
 # configurazione standard per PC
 
 # Boxstarter options
-$Boxstarter.RebootOk=$true # Allow reboots?
+$Boxstarter.RebootOk=$false # Allow reboots?
 $Boxstarter.NoPassword=$false # Is this a machine with no login password?
 $Boxstarter.AutoLogin=$true # Save my password securely and auto-login after a reboot
+$env:ChocolateyAllowEmptyChecksums=$true
 
 # Basic setup
-Write-Host "Setting execution policy" 
+Write-Host "configuro execution policy" 
 Update-ExecutionPolicy -remotesigned
 
 Disable-UAC
 
-Write-Host "Enable MicrosoftUpdate"
+Write-Host "Attivo MicrosoftUpdate"
 Enable-MicrosoftUpdate
 
-Write-Host "Change Windows Updates to 'Notify to schedule restart'"
+Write-Host "Aggiorno le impostazioni per windows update"
 # Change Windows Updates to "Notify to schedule restart"
 If (!(Test-Path "HKCU:\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings")) {
     New-Item -Path HKCU:\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings -Force | Out-Null
@@ -27,6 +28,8 @@ Set-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings -Name 
 
 Write-Host "Install WindowsUpdate"
 Install-WindowsUpdate -AcceptEula -GetUpdatesFromMS
+
+start-sleep 30
 
 choco install 7zip.install -y 
 choco install googlechrome -y
@@ -41,7 +44,15 @@ DISM /Online /NoRestart /Enable-Feature:TelnetClient
 Enable-RemoteDesktop
 
 # Update Windows and reboot if necessary
+start-sleep 30
 
 if (Test-PendingReboot) { Invoke-Reboot }
 
+start-sleep 10
+
+Enable-UAC
+
 Write-Host -ForegroundColor:Green "Installazione econfigurazione completata!" 
+start-sleep 30
+
+
