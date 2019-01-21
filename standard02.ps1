@@ -26,7 +26,7 @@ If (!(Test-Path "HKLM:\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings")) {
 }
 Set-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings -Name UxOption -Type DWord -Value 1
 
-Write-Host "Install WindowsUpdate"
+Write-Host "Installazione WindowsUpdate"
 Install-WindowsUpdate -AcceptEula -GetUpdatesFromMS
 
 start-sleep 30
@@ -51,6 +51,11 @@ if (Test-PendingReboot) { Invoke-Reboot }
 start-sleep 10
 
 Enable-UAC
+
+Write-Host "Seconda fase installazione WindowsUpdate"
+Install-WindowsUpdate -AcceptEula -GetUpdatesFromMS
+start-sleep 10
+if (Test-PendingReboot) { Invoke-Reboot }
 
 Write-Host -ForegroundColor:Green "Installazione econfigurazione completata!" 
 start-sleep 30
