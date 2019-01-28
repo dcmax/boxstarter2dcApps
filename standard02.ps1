@@ -7,13 +7,11 @@ $Boxstarter.AutoLogin=$true # Save my password securely and auto-login after a r
 $env:ChocolateyAllowEmptyChecksums=$true
 
 # Basic setup
-Write-Host "configuro execution policy" 
+Write-Host "Configuro execution policy" 
 Update-ExecutionPolicy -remotesigned
 
 Disable-UAC
 
-Write-Host "Attivo MicrosoftUpdate"
-Enable-MicrosoftUpdate
 
 Write-Host "Aggiorno le impostazioni per windows update"
 # Change Windows Updates to "Notify to schedule restart"
@@ -26,16 +24,14 @@ If (!(Test-Path "HKLM:\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings")) {
 }
 Set-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings -Name UxOption -Type DWord -Value 1
 
-Write-Host "Installazione WindowsUpdate"
-Install-WindowsUpdate -AcceptEula -GetUpdatesFromMS
-
-start-sleep 30
-
 choco install 7zip.install -y 
 choco install googlechrome -y
 choco install firefox -y
 choco install adobereader -y
 choco install notepadplusplus.install -y
+
+# 3D Builder remove
+Get-AppxPackage Microsoft.3DBuilder | Remove-AppxPackage
 
 Set-windowsExplorerOptions  -showFileExtensions -EnableShowFullPathInTitleBar -EnableOpenFileExplorerToQuickAccess -EnableShowRecentFilesInQuickAccess -EnableShowFrequentFoldersInQuickAccess -EnableExpandToOpenFolder -EnableShowRibbon
 
@@ -46,11 +42,20 @@ Enable-RemoteDesktop
 # Update Windows and reboot if necessary
 start-sleep 30
 
+Enable-UAC
+
+Write-Host "Attivo MicrosoftUpdate"
+Enable-MicrosoftUpdate
+
+Write-Host "Installazione WindowsUpdate"
+Install-WindowsUpdate -AcceptEula -GetUpdatesFromMS
+
+start-sleep 30
 if (Test-PendingReboot) { Invoke-Reboot }
 
 start-sleep 10
 
-Enable-UAC
+
 
 Write-Host "Seconda fase installazione WindowsUpdate"
 Install-WindowsUpdate -AcceptEula -GetUpdatesFromMS
