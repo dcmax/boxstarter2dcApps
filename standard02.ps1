@@ -1,4 +1,4 @@
-# configurazione standard per PC
+# configurazione standard per PC versione 3
 
 # Boxstarter options
 $Boxstarter.RebootOk=$true # Allow reboots?
