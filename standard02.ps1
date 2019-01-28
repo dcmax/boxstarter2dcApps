@@ -24,11 +24,11 @@ If (!(Test-Path "HKLM:\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings")) {
 }
 Set-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings -Name UxOption -Type DWord -Value 1
 
-choco install 7zip.install -y 
-choco install googlechrome -y
-choco install firefox -y
-choco install adobereader -y
-choco install notepadplusplus.install -y
+choco install 7zip.install -y  -verbose
+choco install googlechrome -y -verbose
+choco install firefox -y -verbose
+choco install adobereader -y -verbose
+choco install notepadplusplus.install -y -verbose
 
 # 3D Builder remove
 Get-AppxPackage Microsoft.3DBuilder | Remove-AppxPackage
