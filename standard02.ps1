@@ -30,8 +30,7 @@ choco install firefox -y -verbose
 choco install adobereader -y -verbose
 choco install notepadplusplus.install -y -verbose
 
-# 3D Builder remove
-Get-AppxPackage Microsoft.3DBuilder | Remove-AppxPackage
+
 
 Set-windowsExplorerOptions  -showFileExtensions -EnableShowFullPathInTitleBar -EnableOpenFileExplorerToQuickAccess -EnableShowRecentFilesInQuickAccess -EnableShowFrequentFoldersInQuickAccess -EnableExpandToOpenFolder -EnableShowRibbon
 
