@@ -8,14 +8,14 @@ $Boxstarter.AutoLogin=$true # Save my password securely and auto-login after a r
 Update-ExecutionPolicy -remotesigned
 
 choco install 7zip.install -y 
-choco install firefox -y
+
 choco install windirstat  -y 
-choco install sysinternals -y
+
 choco install greenshot -y
-choco install windowstelnet -y
+
 choco install putty.install -y 
 choco install notepadplusplus.install -y
-choco install jre8 -y
+
 choco install windows-admin-center -y 
 choco install adobereader-update -y
 
