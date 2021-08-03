@@ -7,25 +7,25 @@ $Boxstarter.AutoLogin=$true # Save my password securely and auto-login after a r
 
 Update-ExecutionPolicy -remotesigned
 
+Install-WindowsUpdate -AcceptEula -GetUpdatesFromMS
+if (Test-PendingReboot) { Invoke-Reboot }
+
+Install-WindowsUpdate -AcceptEula -GetUpdatesFromMS
+if (Test-PendingReboot) { Invoke-Reboot }
+
 choco install 7zip.install -y 
-
-choco install windirstat  -y 
-
-choco install greenshot -y
-
 choco install putty.install -y 
 choco install notepadplusplus.install -y
 
+choco install microsoft-edge -y 
 choco install windows-admin-center -y 
-choco install adobereader-update -y
+choco install adobereader -y
+
+#choco install windirstat  -y 
+#choco install greenshot -y
 
 Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtectedOSFiles -EnableShowFileExtensions -EnableShowFullPathInTitleBar
 
 Enable-RemoteDesktop
 Enable-MicrosoftUpdate
 
-Install-WindowsUpdate -AcceptEula -GetUpdatesFromMS
-if (Test-PendingReboot) { Invoke-Reboot }
-
-Install-WindowsUpdate -AcceptEula -GetUpdatesFromMS
-if (Test-PendingReboot) { Invoke-Reboot }
